@@ -1,8 +1,4 @@
-
-import java.util.ArrayList;
-import java.util.List;
-
-import java.util.Map;
+import java.util.*;
 
 public class Company extends Place {
     // first approach : this requires another
@@ -15,10 +11,9 @@ public class Company extends Place {
     };
 
     // second approach
-    /* private Map<String, String> Jobs = new Map<String, String>(); */
 
-    public Company(Map.Entry<String, Integer> location, String adresse, String name, float ratings) {
-        /* super(location, adresse, name, ratings); */
+    public Company(Map.Entry<Double, Double> location, String adresse, String name, int rating) {
+        super(location, adresse, name, rating);
     }
 
     public List<Job> getJobs() {
