@@ -1,3 +1,5 @@
+package models;
+
 import java.util.Map;
 
 public abstract class Place {
@@ -13,7 +15,6 @@ public abstract class Place {
         this.adresse = adresse;
         this.name = name;
         this.rating = rating;
-        this.id++;
     }
 
     public String getAdresse() {
@@ -40,15 +41,4 @@ public abstract class Place {
         this.rating = rating;
     }
 
-    public void getData() {
-    }
-
-    public void deleteData() {
-    }
-
-    public void updateData() {
-    }
-
-    public void addData() {
-    }
 }

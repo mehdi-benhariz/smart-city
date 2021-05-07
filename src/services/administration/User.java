@@ -47,31 +47,30 @@ public abstract class User {
         }
     }
 
-    public static User register(){
-        
+    public static void register() {
+
         Scanner sc = new Scanner(System.in);
         System.out.println("Enter your name:");
-        String name=sc.next();
+        String name = sc.next();
         System.out.println("Enter your email:");
-        String email=sc.next();
+        String email = sc.next();
         System.out.println("Enter your age:");
-        int age = sc.next();
+        int age = sc.nextInt();
         System.out.println("Enter your password:");
         String pwd = sc.next();
         System.out.println("confirm your password:");
-        String confirmpwd=sc.next();
+        String confirmpwd = sc.next();
 
-        while(confirmpwd!=pwd){
+        while (confirmpwd != pwd) {
 
             System.out.println("write your pwd again");
-            
+
             System.out.println("Enter your password:");
             pwd = sc.next();
             System.out.println("confirm your password:");
             confirmpwd = sc.next();
-            
-            }
-        
 
+        }
 
+    }
 }

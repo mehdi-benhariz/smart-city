@@ -1,3 +1,5 @@
+package models;
+
 import java.util.Map;
 
 public class College extends Place {
