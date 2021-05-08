@@ -22,6 +22,8 @@ public class DBUtils {
         return null;
 
     }
+    // append = true in case of adding data
+    // append = false in case of update or delete
 
     public static void saveData(String db, Vector<String[]> data, boolean append) {
         String path = "src/files/" + db + ".csv";

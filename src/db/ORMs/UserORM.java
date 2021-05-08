@@ -1,8 +1,7 @@
 package ORMs;
 
-public class CompanyORM {
-
-    public static Vector<College> getAll() {
+public class UserORM {
+    public static Vector<User> getAll() {
         // TODO Auto-generated method stub
         // DBUtils.getData("Colleges");
         // loop through data and create a vector of object
@@ -35,4 +34,5 @@ public class CompanyORM {
         // DBUtils.saveData("Colleges",res,true)
 
     }
+
 }
