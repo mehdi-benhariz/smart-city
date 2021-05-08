@@ -2,11 +2,12 @@ package views;
 
 import java.util.Scanner;
 
-import models.User;
+/**
+ * SelectCategory
+ */
+public class SelectCategory extends Screen {
 
-public class Welcome_screen extends Screen {
-
-    public Welcome_screen(String screenName, String[] options) {
+    public SelectCategory(String screenName, String[] options) {
         super(screenName, options);
     }
 
@@ -17,15 +18,14 @@ public class Welcome_screen extends Screen {
 
         // choices
         if (choice == 1) {
-            Boolean isAuth = User.auth();
-            if (isAuth)
-                return "categoryScreen";
-            return "mainScreen";
+            System.out.println("Education");
         }
-        if (choice == 2) {
-            System.out.println("registration");
-            return "mainScreen";
-        }
+        if (choice == 2)
+            System.out.println("accommodation");
+
+        if (choice == 3)
+            System.out.println("work");
+
         if (choice == 0) {
             return "exit";
         }
@@ -33,4 +33,5 @@ public class Welcome_screen extends Screen {
         return "mainScreen";
 
     }
+
 }
