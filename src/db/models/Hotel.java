@@ -2,11 +2,13 @@ package models;
 
 import java.util.*;
 
+import Utils.Pair;
+
 public class Hotel extends Place {
     private boolean seaView;
     HashMap<Integer, Double> nightPrice = new HashMap<Integer, Double>();
 
-    public Hotel(Map.Entry<Double, Double> location, String adresse, String name, int rating, boolean seaView,
+    public Hotel(Pair location, String adresse, String name, int rating, boolean seaView,
             HashMap<Integer, Double> nightPrice) {
         super(location, adresse, name, rating);
         this.seaView = seaView;

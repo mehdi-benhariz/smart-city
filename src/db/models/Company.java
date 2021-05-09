@@ -2,8 +2,10 @@ package models;
 
 import java.util.*;
 
+import Utils.Pair;
+
 public class Company extends Place {
-    // first approach : this requires another
+
     private List<Job> jobs = new ArrayList<Job>() {
         {
             add(new Job("developer", "description", "CS"));
@@ -12,9 +14,7 @@ public class Company extends Place {
         }
     };
 
-    // second approach
-
-    public Company(Map.Entry<Double, Double> location, String adresse, String name, int rating) {
+    public Company(Pair location, String adresse, String name, int rating) {
         super(location, adresse, name, rating);
     }
 

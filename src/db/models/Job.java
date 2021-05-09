@@ -35,5 +35,6 @@ public class Job {
     public void setDegree(String degree) {
         this.degree = degree;
     }
-
+    // TODO add 4 methods : getAll / getById(int id)/deleteById (Int id) /update(int
+    // id, Job newJob)
 }

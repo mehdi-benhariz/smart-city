@@ -1,10 +1,12 @@
+package Utils;
+
 import java.io.*;
 import java.util.Vector;
 
 public class DBUtils {
     public static Vector<String[]> getData(String db) {
         Vector<String[]> res = new Vector<String[]>();
-        String path = "src/files/" + db + ".csv";
+        String path = "src/db/dbFiles/" + db + ".csv";
         try (BufferedReader br = new BufferedReader(new FileReader(path))) {
             String line;
             while ((line = br.readLine()) != null) {
@@ -26,7 +28,7 @@ public class DBUtils {
     // append = false in case of update or delete
 
     public static void saveData(String db, Vector<String[]> data, boolean append) {
-        String path = "src/files/" + db + ".csv";
+        String path = "src/db/dbFiles/" + db + ".csv";
 
         try (BufferedWriter bw = new BufferedWriter(new FileWriter(path, append));
                 PrintWriter pw = new PrintWriter(bw)) {

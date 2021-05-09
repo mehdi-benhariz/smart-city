@@ -1,20 +1,29 @@
 package models;
 
-import java.util.Map;
+import Utils.Pair;
 
 public abstract class Place {
-    // TODO:dicuss the static id ans it's importance in db
+
     static int id = 0;
-    Map.Entry<Double, Double> location;
+
     private String adresse;
     private String name;
     private int rating;
+    private Pair location;
 
-    public Place(Map.Entry<Double, Double> location, String adresse, String name, int rating) {
-        this.location = location;
+    public Place(Pair location, String adresse, String name, int rating) {
+        this.setLocation(location);
         this.adresse = adresse;
         this.name = name;
         this.rating = rating;
+    }
+
+    public Pair getLocation() {
+        return location;
+    }
+
+    public void setLocation(Pair location) {
+        this.location = location;
     }
 
     public String getAdresse() {
@@ -41,4 +50,10 @@ public abstract class Place {
         this.rating = rating;
     }
 
+    public Pair convertStringToPair(String pair) {
+        String[] Location = pair.split(" ", 1);
+        Double x = Double.parseDouble(Location[0]);
+        Double y = Double.parseDouble(Location[1]);
+        return new Pair(x, y);
+    }
 }

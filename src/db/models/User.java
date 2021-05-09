@@ -2,7 +2,7 @@ package models;
 
 import java.util.Scanner;
 
-public abstract class User {
+public abstract class User implements Model {
     private int age;
     private String email;
     private int id;
