@@ -50,7 +50,7 @@ public abstract class Place {
         this.rating = rating;
     }
 
-    public Pair convertStringToPair(String pair) {
+    public static Pair convertStringToPair(String pair) {
         String[] Location = pair.split(" ", 1);
         Double x = Double.parseDouble(Location[0]);
         Double y = Double.parseDouble(Location[1]);

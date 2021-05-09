@@ -33,13 +33,17 @@ public class College extends Place implements Model {
 
     public static Vector<College> getAll() {
 
-        Vector<String[]> tableOfDB = DBUtils.getData("college");
+        Vector<String[]> tableOfDB = DBUtils.getData("Colleges");
         Vector<College> tableOfColleges = new Vector<College>();
         for (int i = 0; i < tableOfDB.size(); i++) {
-            String[] Location = (tableOfDB.get(i)[0]).split(" ", 1);
-            tableOfColleges.add(new College(new Pair(Double.parseDouble(Location[0]), Double.parseDouble(Location[1])),
-                    (tableOfDB.get(i)[1]), (tableOfDB.get(i)[2]), (Integer.parseInt(tableOfDB.get(i)[3])),
-                    Double.parseDouble((tableOfDB.get(i)[4])), (tableOfDB.get(i)[5])));
+            Pair location = convertStringToPair(tableOfDB.get(i)[0]);
+            String adresse = (tableOfDB.get(i)[1]);
+            String name = (tableOfDB.get(i)[2]);
+            int rating = (Integer.parseInt(tableOfDB.get(i)[3]));
+            Double score = Double.parseDouble((tableOfDB.get(i)[4]));
+            String degree = (tableOfDB.get(i)[5]);
+
+            tableOfColleges.add(new College(location, adresse, name, rating, score, degree));
         }
         return tableOfColleges;
     }
@@ -66,7 +70,7 @@ public class College extends Place implements Model {
         // res = DBUtils.getData("Colleges");
         // delete from res
         // DBUtils.saveData("Colleges",res,false)
-        Vector<String[]> tableOfDB = DBUtils.getData("college");
+        Vector<String[]> tableOfDB = DBUtils.getData("Colleges");
         for (int i = 0; i < tableOfDB.size(); i++) {
             // id is in the first case
             if (Integer.parseInt((tableOfDB.get(i)[0])) == id) {
@@ -74,14 +78,14 @@ public class College extends Place implements Model {
                 break;
             }
         }
-        DBUtils.saveData("college", tableOfDB, false);
+        DBUtils.saveData("Colleges", tableOfDB, false);
     }
 
     public static void update(int id, College newCollege) {
         // res = DBUtils.getData("Colleges");
         // update from res
         // DBUtils.saveData("Colleges",res,false)
-        Vector<String[]> tableOfDB = DBUtils.getData("college");
+        Vector<String[]> tableOfDB = DBUtils.getData("Colleges");
         for (int i = 0; i < tableOfDB.size(); i++) {
             // id is in the first case
             if (Integer.parseInt((tableOfDB.get(i)[0])) == id) {
@@ -95,24 +99,24 @@ public class College extends Place implements Model {
                 break;
             }
         }
-        DBUtils.saveData("college", tableOfDB, false);
+        DBUtils.saveData("Colleges", tableOfDB, false);
     }
 
     @Override
     public void save() {
-        // read from db
         // create a String[] from "this" data
         // write to db;
 
-        Vector<String[]> tableOfDB = DBUtils.getData("Colleges");
-        int index = tableOfDB.size();
-        tableOfDB.get(index)[1] = String.valueOf((this.getLocation().getX())) + " "
-                + String.valueOf((this.getLocation()).getY());
-        tableOfDB.get(index)[2] = this.getAdresse();
-        tableOfDB.get(index)[3] = this.getName();
-        tableOfDB.get(index)[4] = String.valueOf(this.getRating());
-        tableOfDB.get(index)[5] = String.valueOf(this.getScore());
-        tableOfDB.get(index)[6] = this.getDegree();
+        Vector<String[]> tableOfDB = new Vector<String[]>();
+        String[] row = new String[7];
+
+        row[1] = String.valueOf((getLocation().getX())) + " " + String.valueOf((getLocation()).getY());
+        row[2] = getAdresse();
+        row[3] = getName();
+        row[4] = String.valueOf(getRating());
+        row[5] = String.valueOf(getScore());
+        row[6] = getDegree();
+        tableOfDB.add(row);
         DBUtils.saveData("Colleges", tableOfDB, true);
     }
 }
