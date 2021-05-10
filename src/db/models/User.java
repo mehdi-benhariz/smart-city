@@ -87,9 +87,10 @@ public class User implements Model {
         }
     }
 
-    public static User register(String name, int age, String email, String pwd) {
-        int id = Integer.parseInt(DBUtils.getData("Users").get(3)[0]);
-        User newUser = new User(id, name, age, email, pwd);
+    public static User register(int age, String email, String name, String pwd) {
+        int len = DBUtils.getData("Users").size();
+        int idOfLastUser = Integer.parseInt(DBUtils.getData("Users").get(len - 1)[0]);
+        User newUser = new User(idOfLastUser + 1, name, age, email, pwd);
         newUser.save();
         return newUser;
     }
