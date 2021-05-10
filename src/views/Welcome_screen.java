@@ -2,7 +2,7 @@ package views;
 
 import java.util.Scanner;
 
-import models.User;
+import Context.Context;
 
 public class Welcome_screen extends Screen {
 
@@ -14,23 +14,24 @@ public class Welcome_screen extends Screen {
         Scanner input = new Scanner(System.in);
         System.out.print("[choice] : ");
         int choice = input.nextInt();
-
+        input.close();
         // choices
         if (choice == 1) {
-            Boolean isAuth = User.auth();
-            if (isAuth)
-                return "categoryScreen";
-            return "mainScreen";
+            return "/login";
         }
         if (choice == 2) {
-            System.out.println("registration");
-            return "mainScreen";
+            return "/register";
         }
         if (choice == 0) {
-            return "exit";
+            return "/exit";
         }
         // stay on the same screen
-        return "mainScreen";
+        return "/home";
+    }
 
+    @Override
+    public void build(Context context) {
+        this.display();
+        context.navigator.push(context, this.handelInput());
     }
 }

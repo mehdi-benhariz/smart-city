@@ -15,7 +15,7 @@ public class SelectCategory extends Screen {
         Scanner input = new Scanner(System.in);
         System.out.print("[choice] : ");
         int choice = input.nextInt();
-
+        input.close();
         // choices
         if (choice == 1) {
             System.out.println("Education");
