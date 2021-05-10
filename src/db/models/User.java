@@ -4,6 +4,7 @@ import java.util.Scanner;
 import java.util.Vector;
 
 import Utils.DBUtils;
+import services.administration.Admin;
 
 public class User implements Model {
     private int age;
@@ -60,62 +61,37 @@ public class User implements Model {
         this.age = age;
     }
 
-    public static Boolean auth() {
-        // public static User auth() {
+    public static User find(String username, String password) {
+        Vector<User> users = getAll();
+        for (User user : users)
+            if ((user.getName() == username && user.getPwd() == password))
+                return user;
 
+        return null;
+    }
+
+    public static User auth(String username, String password) {
         try {
-            Scanner input = new Scanner(System.in);
-            System.out.println("______________________________");
-            System.out.println("Welcome to smart city application! please login to continue :");
-            System.out.println("______________________________");
-
-            System.out.print("Username : ");
-            String username = input.nextLine();
-            System.out.print("password : ");
-            String password = input.nextLine();
 
             // TODO: check if a user with this credential exists in the DB
             // ORMUser return User object if exist else NULL
-            // user = ORMUser.find(username, password)
-            // if(user)
-            if (username.equals("ahmed") && password.equals("password")) {
+            User user = find(username, password);
+            if (user != null)
+                return user;
 
-                // return user;
-                return true;
-            }
             System.out.println("login failed");
-            return false;
+            return null;
             // return NULL;
         } catch (Exception e) {
-            return false;
-            // return NULL;
+            return null;
         }
     }
 
-    public static void register() {
-
-        Scanner sc = new Scanner(System.in);
-        System.out.println("Enter your name:");
-        String name = sc.next();
-        System.out.println("Enter your email:");
-        String email = sc.next();
-        System.out.println("Enter your age:");
-        int age = sc.nextInt();
-        System.out.println("Enter your password:");
-        String pwd = sc.next();
-        System.out.println("confirm your password:");
-        String confirmpwd = sc.next();
-
-        while (confirmpwd != pwd) {
-
-            System.out.println("write your pwd again");
-
-            System.out.println("Enter your password:");
-            pwd = sc.next();
-            System.out.println("confirm your password:");
-            confirmpwd = sc.next();
-
-        }
+    public static User register(String name, int age, String email, String pwd) {
+        int id = Integer.parseInt(DBUtils.getData("Users").get(3)[0]);
+        User newUser = new User(id, name, age, email, pwd);
+        newUser.save();
+        return newUser;
     }
 
     public static Vector<User> getAll() {
