@@ -1,10 +1,8 @@
 package models;
 
-import java.util.Scanner;
 import java.util.Vector;
 
 import Utils.DBUtils;
-import services.administration.Admin;
 
 public class User implements Model {
     private int age;
