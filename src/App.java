@@ -1,5 +1,11 @@
+import java.util.HashMap;
+
+import Context.Context;
+import views.Exit;
 import views.Screen;
 import views.SelectCategory;
+import views.LoginScreen;
+
 import views.Welcome_screen;
 
 public class App {
@@ -7,28 +13,18 @@ public class App {
         final String[] mainOptions = { "login", "registration" };
         final String[] CategoryOptions = { "Education", "accommodation", "work", "retrun" };
 
-        final Screen[] screenNav = new Screen[2];
+        HashMap<String, Screen> routes = new HashMap<String, Screen>();
 
-        screenNav[0] = new Welcome_screen("Chose your action:", mainOptions);
-        screenNav[1] = new SelectCategory("Welecome to smart city, what are you looking for :", CategoryOptions);
+        routes.put("/home", new Welcome_screen("Chose your action:", mainOptions));
+        // routes.put("/login", new LoginScreen("Please Login to Continue !"));
+        routes.put("/categories",
+                new SelectCategory("Welecome to smart city, what are you looking for :", CategoryOptions));
+        routes.put("/exit", new Exit());
 
-        String currentScreen = "mainScreen";
-
-        // TODO: Add InputMismatchException
-
+        Context context = new Context(routes);
+        context.init("/home");
         while (true) {
-            System.out.println("==> " + currentScreen);
-            if (currentScreen == "mainScreen") {
-                screenNav[0].display();
-                currentScreen = screenNav[0].handelInput();
-            } else if (currentScreen == "categoryScreen") {
-                screenNav[1].display();
-                currentScreen = screenNav[1].handelInput();
-            } else if (currentScreen == "exit")
-                System.exit(0);
-            else {
-                System.out.println("invalid command");
-            }
+            context.build();
         }
 
     }
