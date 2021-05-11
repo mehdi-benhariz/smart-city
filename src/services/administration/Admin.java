@@ -3,6 +3,8 @@ package services.administration;
 import java.io.*;
 import java.util.*;
 
+import models.User;
+
 public class Admin extends User {
     protected int admin_id;
     Vector<User> Users = new Vector<User>(100);

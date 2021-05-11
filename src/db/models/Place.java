@@ -56,4 +56,9 @@ public abstract class Place {
         Double y = Double.parseDouble(Location[1]);
         return new Pair(x, y);
     }
+
+    public static Object convertStringToObject(String[] row) {
+        return null;
+    }
+
 }
