@@ -15,7 +15,7 @@ public class Navigator {
     public void push(Context context, String route) {
         Screen screen = context.match(route);
         context.setActiveScreen(screen);
-        navStack.push(screen);
+
     }
 
     public Screen push(Screen screen) {

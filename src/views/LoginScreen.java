@@ -23,5 +23,6 @@ public class LoginScreen extends Screen {
     public void build(Context context) {
         this.display();
         context.setUser(AuthActions.loginUser());
+        context.navigator.push(context, "/categories");
     }
 }

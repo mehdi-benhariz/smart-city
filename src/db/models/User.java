@@ -60,6 +60,7 @@ public class User implements Model {
     }
 
     public static User convertStringToObject(String[] row) {
+
         int id = Integer.parseInt(row[0]);
         int age = Integer.parseInt(row[1]);
         String email = row[2];
@@ -69,15 +70,18 @@ public class User implements Model {
     }
 
     public static User find(String username, String password) {
-        Vector<User> users = getAll();
+
+        Vector<User> users = User.getAll();
+
         for (User user : users)
-            if ((user.getName() == username && user.getPwd() == password))
+            if ((user.getName().equals(username)) && (user.getPwd().equals(password)))
                 return user;
 
         return null;
     }
 
-    public static User auth(String username, String password) {
+    public static User auth(String password, String username) {
+
         try {
             User user = find(username, password);
             if (user != null)
@@ -86,6 +90,7 @@ public class User implements Model {
             System.out.println("login failed");
             return null;
         } catch (Exception e) {
+
             return null;
         }
     }
@@ -99,7 +104,6 @@ public class User implements Model {
     }
 
     public static Vector<User> getAll() {
-
         Vector<String[]> tableOfDB = DBUtils.getData("Users");
         Vector<User> tableOfUsers = new Vector<User>();
         for (String[] row : tableOfDB)

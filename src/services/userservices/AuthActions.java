@@ -16,7 +16,8 @@ public class AuthActions {
         System.out.print("password : ");
         String password = input.nextLine();
         input.close();
-        return User.auth(username, password);
+        System.out.println(password);
+        return User.auth(password, username);
     }
 
     /*
