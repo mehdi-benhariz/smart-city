@@ -16,7 +16,7 @@ public class App {
         HashMap<String, Screen> routes = new HashMap<String, Screen>();
 
         routes.put("/home", new Welcome_screen("Chose your action:", mainOptions));
-        // routes.put("/login", new LoginScreen("Please Login to Continue !"));
+        routes.put("/login", new LoginScreen("Please Login to Continue !"));
         routes.put("/categories",
                 new SelectCategory("Welecome to smart city, what are you looking for :", CategoryOptions));
         routes.put("/exit", new Exit());

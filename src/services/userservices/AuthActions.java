@@ -9,14 +9,9 @@ public class AuthActions {
      * Get user input and return User object if Exist
      */
 
-    public static User loginUser() {
-        Scanner input = new Scanner(System.in);
-        System.out.print("Username : ");
-        String username = input.nextLine();
-        System.out.print("password : ");
-        String password = input.nextLine();
-        input.close();
-        return User.auth(username, password);
+    public static User loginUser(String password, String username) {
+        User user = User.auth(username, password);
+        return user;
     }
 
     /*
@@ -43,7 +38,7 @@ public class AuthActions {
             System.out.println("confirm your password:");
             confirmpwd = input.next();
         }
-        input.close();
+        // input.close();
 
         return User.register(age, email, name, pwd);
     }

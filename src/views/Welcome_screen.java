@@ -14,7 +14,7 @@ public class Welcome_screen extends Screen {
         Scanner input = new Scanner(System.in);
         System.out.print("[choice] : ");
         int choice = input.nextInt();
-        input.close();
+        // input.close();
         // choices
         if (choice == 1) {
             return "/login";
