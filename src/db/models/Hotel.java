@@ -9,7 +9,7 @@ public class Hotel extends Place implements Model {
     private boolean seaView;
     HashMap<String, Double> nightPrice = new HashMap<String, Double>();
 
-    public Hotel(Pair location, String adresse, String name, int rating, boolean seaView,
+    public Hotel(Pair<Double> location, String adresse, String name, int rating, boolean seaView,
             HashMap<String, Double> nightPrice) {
         super(location, adresse, name, rating);
         this.seaView = seaView;
@@ -33,7 +33,7 @@ public class Hotel extends Place implements Model {
     }
 
     public static Hotel convertStringToObject(String[] row) {
-        Pair location = convertStringToPair(row[1]);
+        Pair<Double> location = convertStringToPair(row[1]);
         String adresse = (row[2]);
         String name = (row[3]);
         int rating = (Integer.parseInt(row[4]));

@@ -1,28 +1,28 @@
 package Utils;
 
-public class Pair {
-    private Double x;
+//TODO make it generic
+public class Pair<P> {
+    private P x;
+    private P y;
 
-    public Pair(Double x, Double y) {
+    public Pair(P x, P y) {
         this.x = x;
         this.y = y;
     }
 
-    private Double y;
-
-    public Double getX() {
+    public P getX() {
         return x;
     }
 
-    public Double getY() {
+    public P getY() {
         return y;
     }
 
-    public void setY(Double y) {
+    public void setY(P y) {
         this.y = y;
     }
 
-    public void setX(Double x) {
+    public void setX(P x) {
         this.x = x;
     }
 

@@ -1,7 +1,9 @@
 import java.util.HashMap;
 
 import Context.Context;
+
 import models.User;
+import services.Recommand;
 import views.Exit;
 import views.Screen;
 import views.SelectCategory;
@@ -10,6 +12,10 @@ import views.LoginScreen;
 
 public class App {
     public static void main(String[] args) throws Exception {
+
+        Recommand<User> re = new Recommand<User>();
+        System.out.println(re.recommand(new User()));
+
         final String[] mainOptions = { "login", "registration" };
         final String[] CategoryOptions = { "Education", "accommodation", "work", "retrun" };
 
@@ -19,9 +25,8 @@ public class App {
         routes.put("/login", new LoginScreen("Please Login to Continue !"));
         routes.put("/categories",
                 new SelectCategory("Welecome to smart city, what are you looking for :", CategoryOptions));
-        // routes.put("/form",new
-        // FormScreen
-        // ); //
+        // routes.put("/form",new FormScreen); //
+        // //
         // routes.put("/result", new ResultScreen());
 
         routes.put("/exit", new Exit());

@@ -11,6 +11,10 @@ public class User implements Model {
     private String name;
     private String pwd;
 
+    public User() {
+
+    }
+
     public User(int id, String name, int age, String email, String pwd) {
         this.setAge(age);
         this.setEmail(email);

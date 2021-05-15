@@ -5,11 +5,12 @@ import java.util.Vector;
 import Utils.DBUtils;
 import Utils.Pair;
 
+//add to all models  / toSTtring
 public class College extends Place implements Model {
     private double score;
     private String degree;
 
-    public College(Pair location, String adresse, String name, int rating, double score, String degree) {
+    public College(Pair<Double> location, String adresse, String name, int rating, double score, String degree) {
         super(location, adresse, name, rating);
         this.score = score;
         this.degree = degree;
@@ -32,7 +33,7 @@ public class College extends Place implements Model {
     }
 
     public static College convertStringToObject(String[] row) {
-        Pair location = convertStringToPair(row[0]);
+        Pair<Double> location = convertStringToPair(row[0]);
         String adresse = (row[1]);
         String name = (row[2]);
         int rating = (Integer.parseInt(row[3]));

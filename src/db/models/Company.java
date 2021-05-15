@@ -15,7 +15,7 @@ public class Company extends Place implements Model {
         }
     };
 
-    public Company(Pair location, String adresse, String name, int rating, List<Job> jobs) {
+    public Company(Pair<Double> location, String adresse, String name, int rating, List<Job> jobs) {
         super(location, adresse, name, rating);
         setJobs(jobs);
     }
@@ -29,7 +29,7 @@ public class Company extends Place implements Model {
     }
 
     public static Company convertStringToObject(String[] row) {
-        Pair location = convertStringToPair(row[1]);
+        Pair<Double> location = convertStringToPair(row[1]);
         String adresse = row[2];
         String name = row[3];
         int rating = (Integer.parseInt(row[4]));
