@@ -24,7 +24,7 @@ public class Admin extends User {
 
     // khidmt zack!!!
     public void addUser(String name, int age, int id, String email, String pwd) {
-        User new_User = new User(name, age, id, email, pwd);
+        User new_User = new User(age, id, email, name, pwd);
 
         // Add the new element
         users.add(new_User);

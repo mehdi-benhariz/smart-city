@@ -14,17 +14,21 @@ public class Navigator {
 
     public void push(Context context, String route) {
         Screen screen = context.match(route);
-        context.setActiveScreen(screen);
-
-    }
-
-    public Screen push(Screen screen) {
+        // context.setActiveScreen(screen);
         navStack.push(screen);
-        return navStack.peek();
+
     }
 
-    public Screen pop() {
-        return navStack.pop();
+    public void push(Screen screen) {
+        navStack.push(screen);
+    }
+
+    public void pop() {
+        navStack.pop();
+    }
+
+    public Screen peek() {
+        return navStack.peek();
     }
 
 }

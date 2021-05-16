@@ -11,32 +11,31 @@ import views.WelcomeScreen;
 import views.LoginScreen;
 
 public class App {
-    public static void main(String[] args) throws Exception {
+        public static void main(String[] args) throws Exception {
 
-        Recommand<User> re = new Recommand<User>();
-        System.out.println(re.recommand(new User()));
+                Recommand<User> re = new Recommand<User>();
+                System.out.println(re.recommand(new User()));
 
-        final String[] mainOptions = { "login", "registration" };
-        final String[] CategoryOptions = { "Education", "accommodation", "work", "retrun" };
+                final String[] mainOptions = { "login", "registration" };
+                final String[] CategoryOptions = { "Education", "accommodation", "work", "retrun" };
 
-        HashMap<String, Screen> routes = new HashMap<String, Screen>();
+                HashMap<String, Screen> routes = new HashMap<String, Screen>();
 
-        routes.put("/home", new WelcomeScreen("Chose your action:", mainOptions));
-        routes.put("/login", new LoginScreen("Please Login to Continue !"));
-        routes.put("/categories",
-                new SelectCategory("Welecome to smart city, what are you looking for :", CategoryOptions));
-        // routes.put("/form",new FormScreen); //
-        // //
-        // routes.put("/result", new ResultScreen());
+                routes.put("/home", new WelcomeScreen("Chose your action:", mainOptions));
+                routes.put("/login", new LoginScreen("Please Login to Continue !"));
+                routes.put("/categories", new SelectCategory("Welecome to smart city, what are you looking for :",
+                                CategoryOptions));
+                // routes.put("/form",new FormScreen);
+                // routes.put("/result", new ResultScreen());
 
-        routes.put("/exit", new Exit());
+                routes.put("/exit", new Exit());
 
-        Context context = new Context(routes);
-        context.init("/home");
-        while (true) {
-            context.build();
+                Context context = new Context(routes);
+                context.init("/home");
+                while (true) {
+                        context.build();
+                }
+
         }
-
-    }
 
 }

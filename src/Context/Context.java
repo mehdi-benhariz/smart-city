@@ -9,7 +9,6 @@ import views.Screen;
 public class Context {
     private HashMap<String, Screen> routes = new HashMap<String, Screen>();
     public Navigator navigator = new Navigator();
-    private Screen activeScreen;
     private User user = null;
 
     public Context(HashMap<String, Screen> routes) {
@@ -37,14 +36,10 @@ public class Context {
     }
 
     public void init(String homeRoute) {
-        this.activeScreen = this.navigator.push(this.routes.get(homeRoute));
-    }
-
-    public void setActiveScreen(Screen screen) {
-        this.activeScreen = this.navigator.push(screen);
+        this.navigator.push(this.routes.get(homeRoute));
     }
 
     public void build() {
-        this.activeScreen.build(this);
+        this.navigator.peek().build(this);
     }
 }
