@@ -9,11 +9,21 @@ public class Job implements Model {
 
     private String description;
     private String degree;
+    private int id;
 
-    public Job(String name, String description, String degree) {
+    public Job(String name, String description, String degree, int id) {
         this.setName(name);
         this.setDescription(description);
         this.setDegree(degree);
+        this.setId(id);
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
     }
 
     public String getName() {
@@ -40,70 +50,69 @@ public class Job implements Model {
         this.degree = degree;
     }
 
-    // TODO add 5 methods : getAll / getById(int id)/deleteById (Int id) /update(int
-    // id, Job newJob) and save()
+    public static Job convertStringToObject(String[] row) {
+        int id = Integer.parseInt(row[0]);
+        String name = row[1];
+        String description = row[2];
+        String degree = row[3];
+        return new Job(name, description, degree, id);
+
+    }
+
     public static Vector<Job> getAll() {
 
         Vector<String[]> tableOfDB = DBUtils.getData("Jobs");
         Vector<Job> tableOfJobs = new Vector<Job>();
-        for (int i = 0; i < tableOfDB.size(); i++)
-            tableOfJobs.add(new Job(tableOfDB.get(i)[1], tableOfDB.get(i)[2], tableOfDB.get(i)[3]));
+        for (String[] row : tableOfDB)
+            tableOfJobs.add(convertStringToObject(row));
 
         return tableOfJobs;
     }
 
     public static Job getById(int id) {
-        // res = DBUtils.getData("Jobs");
-        // return Obj= res where id = id
-        Vector<String[]> tableOfDB = DBUtils.getData("Jobs");
-        for (int i = 0; i < tableOfDB.size(); i++) {
-            // id is in the first case
-            if (Integer.parseInt((tableOfDB.get(i)[0])) == id) {
 
-                // 0-id 1-name 2-description 3-degree
-                Job res = new Job(tableOfDB.get(i)[1], tableOfDB.get(i)[2], tableOfDB.get(i)[3]);
+        Vector<String[]> tableOfDB = DBUtils.getData("Jobs");
+        for (String[] row : tableOfDB)
+            if (Integer.parseInt((row[0])) == id) {
+                Job res = convertStringToObject(row);
                 return res;
             }
-        }
+
         return null;
     }
 
     public static void deleteById(int id) {
-        // res = DBUtils.getData("Jobs");
-        // delete from res
-        // DBUtils.saveData("Jobs",res,false)
+
         Vector<String[]> tableOfDB = DBUtils.getData("Jobs");
-        for (int i = 0; i < tableOfDB.size(); i++) {
-            // id is in the first case
-            if (Integer.parseInt((tableOfDB.get(i)[0])) == id) {
-                tableOfDB.remove(i);
+        for (String[] row : tableOfDB)
+            if (Integer.parseInt((row[0])) == id) {
+                tableOfDB.remove(row);
                 break;
+
             }
-        }
         DBUtils.saveData("Jobs", tableOfDB, false);
     }
 
     public static void update(int id, Job newjob) {
-        // res = DBUtils.getData("Jobs");
-        // update from res
-        // DBUtils.saveData("Jobs",res,false)
+
         Vector<String[]> tableOfDB = DBUtils.getData("Jobs");
-        for (int i = 0; i < tableOfDB.size(); i++) {
-            // id is in the first case
-            if (Integer.parseInt((tableOfDB.get(i)[0])) == id) {
-                tableOfDB.get(i)[1] = newjob.getName();
-                tableOfDB.get(i)[2] = newjob.getDescription();
-                tableOfDB.get(i)[3] = newjob.getDegree();
+        for (String[] row : tableOfDB)
+
+            if (Integer.parseInt((row[0])) == id) {
+                row[1] = newjob.getName();
+                row[2] = newjob.getDescription();
+                row[3] = newjob.getDegree();
                 break;
             }
-        }
-        DBUtils.saveData("college", tableOfDB, false);
+
+        DBUtils.saveData("Jobs", tableOfDB, false);
     }
 
     @Override
     public void save() {
         Vector<String[]> tableOfDB = new Vector<String[]>();
         String[] row = new String[7];
+        row[0] = String.valueOf(getId());
         row[1] = getName();
         row[2] = getDescription();
         row[3] = getDegree();

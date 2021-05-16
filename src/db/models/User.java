@@ -59,6 +59,15 @@ public class User implements Model {
         this.age = age;
     }
 
+    public static User convertStringToObject(String[] row) {
+        int id = Integer.parseInt(row[0]);
+        int age = Integer.parseInt(row[1]);
+        String email = row[2];
+        String name = row[3];
+        String pwd = row[4];
+        return new User(id, name, age, email, pwd);
+    }
+
     public static User find(String username, String password) {
         Vector<User> users = getAll();
         for (User user : users)
@@ -70,16 +79,12 @@ public class User implements Model {
 
     public static User auth(String username, String password) {
         try {
-
-            // TODO: check if a user with this credential exists in the DB
-            // ORMUser return User object if exist else NULL
             User user = find(username, password);
             if (user != null)
                 return user;
 
             System.out.println("login failed");
             return null;
-            // return NULL;
         } catch (Exception e) {
             return null;
         }
@@ -97,45 +102,27 @@ public class User implements Model {
 
         Vector<String[]> tableOfDB = DBUtils.getData("Users");
         Vector<User> tableOfUsers = new Vector<User>();
-        for (String[] user : tableOfDB) {
-            int id = Integer.parseInt(user[0]);
-            int age = Integer.parseInt(user[1]);
-            String email = user[2];
-            String name = user[3];
-            String pwd = user[4];
-            // TODO add a specific condition for an admin
-            tableOfUsers.add(new User(id, name, age, email, pwd));
+        for (String[] row : tableOfDB)
+            tableOfUsers.add(convertStringToObject(row));
 
-        }
         return tableOfUsers;
     }
 
     public static User getById(int id) {
-        // res = DBUtils.getData("Users");
-        // return Obj= res where id = id
+
         Vector<String[]> tableOfDB = DBUtils.getData("User");
-        for (String[] user : tableOfDB) {
-            // id is in the first case
-            if (Integer.parseInt((user[0])) == id) {
-                int age = Integer.parseInt(user[1]);
-                String email = user[2];
-                String name = user[3];
-                String pwd = user[4];
-                User res = new User(id, name, age, email, pwd);
-                return res;
-            }
-        }
+        for (String[] user : tableOfDB)
+            if (Integer.parseInt((user[0])) == id)
+                return convertStringToObject(user);
+
         return null;
     }
 
     public static void deleteById(int id) {
-        // res = DBUtils.getData("Users");
-        // delete from res
-        // DBUtils.saveData("Users",res,false)
+
         Vector<String[]> tableOfDB = DBUtils.getData("Users");
 
         for (String[] user : tableOfDB) {
-            // id is in the first case
             if (Integer.parseInt((user[0])) == id) {
                 tableOfDB.remove(user);
                 break;
@@ -149,7 +136,7 @@ public class User implements Model {
         // update from res
         // DBUtils.saveData("Users",res,false)
         Vector<String[]> tableOfDB = DBUtils.getData("Users");
-        for (int i = 0; i < tableOfDB.size(); i++) {
+        for (int i = 0; i < tableOfDB.size(); i++)
             // id is in the first case
             if (Integer.parseInt((tableOfDB.get(i)[0])) == id) {
                 tableOfDB.get(i)[1] = Integer.toString(newUser.getAge());
@@ -158,7 +145,7 @@ public class User implements Model {
                 tableOfDB.get(i)[4] = newUser.getName();
                 break;
             }
-        }
+
         DBUtils.saveData("Users", tableOfDB, false);
     }
 
