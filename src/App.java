@@ -25,8 +25,7 @@ public class App {
                 routes.put("/login", new LoginScreen("Please Login to Continue !"));
                 routes.put("/categories", new SelectCategory("Welecome to smart city, what are you looking for :",
                                 CategoryOptions));
-                // routes.put("/form",new FormScreen); //
-                // //
+                // routes.put("/form",new FormScreen);
                 // routes.put("/result", new ResultScreen());
 
                 routes.put("/exit", new Exit());
