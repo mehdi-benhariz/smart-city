@@ -31,7 +31,7 @@ public class LoginScreen extends Screen {
         System.out.print("password : ");
         String password = input.nextLine();
         // input.close();
-
         context.setUser(AuthActions.loginUser(password, username));
+        context.navigator.push(context, "/categories");
     }
 }

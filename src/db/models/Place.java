@@ -9,20 +9,20 @@ public abstract class Place {
     private String adresse;
     private String name;
     private int rating;
-    private Pair location;
+    private Pair<Double> location;
 
-    public Place(Pair location, String adresse, String name, int rating) {
+    public Place(Pair<Double> location, String adresse, String name, int rating) {
         this.setLocation(location);
         this.adresse = adresse;
         this.name = name;
         this.rating = rating;
     }
 
-    public Pair getLocation() {
+    public Pair<Double> getLocation() {
         return location;
     }
 
-    public void setLocation(Pair location) {
+    public void setLocation(Pair<Double> location) {
         this.location = location;
     }
 
@@ -50,11 +50,11 @@ public abstract class Place {
         this.rating = rating;
     }
 
-    public static Pair convertStringToPair(String pair) {
+    public static Pair<Double> convertStringToPair(String pair) {
         String[] Location = pair.split(" ", 1);
         Double x = Double.parseDouble(Location[0]);
         Double y = Double.parseDouble(Location[1]);
-        return new Pair(x, y);
+        return new Pair<Double>(x, y);
     }
 
     public static Object convertStringToObject(String[] row) {

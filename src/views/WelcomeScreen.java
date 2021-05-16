@@ -4,9 +4,9 @@ import java.util.Scanner;
 
 import Context.Context;
 
-public class Welcome_screen extends Screen {
+public class WelcomeScreen extends Screen {
 
-    public Welcome_screen(String screenName, String[] options) {
+    public WelcomeScreen(String screenName, String[] options) {
         super(screenName, options);
     }
 
@@ -14,9 +14,9 @@ public class Welcome_screen extends Screen {
         Scanner input = new Scanner(System.in);
         System.out.print("[choice] : ");
         int choice = input.nextInt();
-        // input.close();
         // choices
         if (choice == 1) {
+
             return "/login";
         }
         if (choice == 2) {

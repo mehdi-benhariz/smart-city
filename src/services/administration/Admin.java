@@ -7,10 +7,10 @@ import models.User;
 
 public class Admin extends User {
     protected int admin_id;
-    Vector<User> Users = new Vector<User>(100);
+    Vector<User> users = new Vector<User>(100);
 
     public Admin(String name, int age, int id, String email, String pwd) {
-        super(name, age, id, email, pwd);
+        super(age, email, name, id, pwd);
         this.admin_id = id;
     }
 
@@ -22,18 +22,19 @@ public class Admin extends User {
         this.admin_id = admin_id;
     }
 
+    // khidmt zack!!!
     public void addUser(String name, int age, int id, String email, String pwd) {
         User new_User = new User(age, id, email, name, pwd);
 
         // Add the new element
-        Users.add(new_User);
+        users.add(new_User);
         System.out.println("User Added Successfully");
     }
 
     private boolean deleteUser(int id) {
-        for (int i=0;i<Users.size();i++)
-        if(Users.get(i).getId()==id)
-        {  Users.remove(i);
+        for (int i=0;i<users.size();i++)
+        if(users.get(i).getId()==id)
+        {  users.remove(i);
             System.out.println("User Removed Successfully");
 
         }
@@ -51,10 +52,10 @@ public class Admin extends User {
         String mail = scanner.nextLine();
        System.out.println("Type new password:");
         String pwd = scanner.nextLine();
-        for(int i=0;i<Users.size();i++)
-        if(Users.get(i).get_id()==id)
-        {Users.get(i).set_user_email(mail);
-          Users.get(i).set_User_pwd(pwd);
+        for(int i=0;i<users.size();i++)
+        if(users.get(i).get_id()==id)
+        {users.get(i).set_user_email(mail);
+          users.get(i).set_User_pwd(pwd);
           System.out.println("information has been updated");       
  
          return true;}
@@ -65,16 +66,16 @@ public class Admin extends User {
     
     }
 
-    public void Get_All_Users() {
-        for (int i = 0; i < Users.size(); i++) {
-            Users.get(i).toString();
+    public void Get_All_users() {
+        for (int i = 0; i < users.size(); i++) {
+            users.get(i).toString();
         }
     }
 
     public User Get_User_By_Id(int id) {
-        for (int i = 0; i < Users.size(); i++) {
-            if (Users.get(i).get_id() == id)
-                return Users.get(i);
+        for (int i = 0; i < users.size(); i++) {
+            if (users.get(i).get_id() == id)
+                return users.get(i);
             else {
                 User Empty_User = new User();
                 System.out.println("No user with the given Id is found in our database please verify your entry.");
