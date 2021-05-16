@@ -9,9 +9,10 @@ import models.Job;
 import models.User;
 
 public class Recommand<T> {
-
+    // unchecked casting warning was suppredded using the decorator
+    @SuppressWarnings("unchecked")
     public Vector<T> recommand(T o) {
-        // TODO check for this warning
+
         if (o instanceof Hotel)
             return (Vector<T>) Hotel.getAll();
         if (o instanceof User)

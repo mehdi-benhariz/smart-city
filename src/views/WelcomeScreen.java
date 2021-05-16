@@ -15,16 +15,15 @@ public class WelcomeScreen extends Screen {
         System.out.print("[choice] : ");
         int choice = input.nextInt();
         // choices
-        if (choice == 1) {
-
+        if (choice == 1)
             return "/login";
-        }
-        if (choice == 2) {
+
+        if (choice == 2)
             return "/register";
-        }
-        if (choice == 0) {
+
+        if (choice == 0)
             return "/exit";
-        }
+
         // stay on the same screen
         return "/home";
     }

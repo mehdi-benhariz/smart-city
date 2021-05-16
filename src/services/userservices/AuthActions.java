@@ -31,7 +31,7 @@ public class AuthActions {
         System.out.println("confirm your password:");
         String confirmpwd = input.next();
 
-        while (confirmpwd != pwd) {
+        while (!confirmpwd.equals(pwd)) {
             System.out.println("[error] Password and confirme password don't match, please try again");
             System.out.println("Enter your password:");
             pwd = input.next();

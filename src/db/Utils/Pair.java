@@ -1,6 +1,5 @@
 package Utils;
 
-//TODO make it generic
 public class Pair<P> {
     private P x;
     private P y;

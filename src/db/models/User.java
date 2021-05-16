@@ -88,10 +88,9 @@ public class User implements Model {
 
         try {
             User user = find(username, password);
-            if (user != null)
-                return user;
+            if (user.equals(null))
+                System.out.println("login failed");
 
-            System.out.println("login failed");
             return null;
         } catch (Exception e) {
 

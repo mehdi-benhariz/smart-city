@@ -33,9 +33,9 @@ public class LoginScreen extends Screen {
         // input.close();
         User user = AuthActions.loginUser(password, username);
         context.setUser(user);
-        if (user != null) {
+        if (user != null)
             context.navigator.push(context, "/categories");
-        } else {
+        else {
             System.out.println("[error] Login Faild");
             context.navigator.pop();
         }
