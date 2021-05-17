@@ -33,12 +33,12 @@ public class College extends Place implements Model {
     }
 
     public static College convertStringToObject(String[] row) {
-        Pair<Double> location = convertStringToPair(row[0]);
-        String adresse = (row[1]);
-        String name = (row[2]);
-        int rating = (Integer.parseInt(row[3]));
-        Double score = Double.parseDouble((row[4]));
-        String degree = (row[5]);
+        Pair<Double> location = convertStringToPair(row[1]);
+        String adresse = (row[2]);
+        String name = (row[3]);
+        int rating = (Integer.parseInt(row[4]));
+        Double score = Double.parseDouble((row[5]));
+        String degree = (row[6]);
         return new College(location, adresse, name, rating, score, degree);
 
     }

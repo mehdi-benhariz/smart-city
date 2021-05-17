@@ -131,9 +131,8 @@ public class Hotel extends Place implements Model {
     @Override
     public String toString() {
         String aux = "";
-        for (String i : nightPrice.keySet()) {
+        for (String i : nightPrice.keySet())
             aux = aux + ("Room type : " + i + "\n" + "Price: " + nightPrice.get(i));
-        }
 
         return super.toString() + "Sea View : " + seaView + "night prices" + aux;
     }
