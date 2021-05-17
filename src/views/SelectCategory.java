@@ -2,6 +2,8 @@ package views;
 
 import java.util.Scanner;
 
+import Context.Context;
+
 /**
  * SelectCategory
  */
@@ -18,19 +20,26 @@ public class SelectCategory extends Screen {
         // input.close();
         // choices
         if (choice == 1)
-            System.out.println("Education");
+            return "/education";
 
         if (choice == 2)
-            System.out.println("accommodation");
+            return "/accommodation";
 
         if (choice == 3)
-            System.out.println("work");
+            return "/work";
 
         if (choice == 0)
-            return "exit";
+            return "/exit";
 
-        // stay on the same screen
-        return "mainScreen";
+        // stay on the main screen
+        return "/mainScreen";
+
+    }
+
+    @Override
+    public void build(Context context) {
+        this.display();
+        context.navigator.push(context, this.handelInput());
 
     }
 

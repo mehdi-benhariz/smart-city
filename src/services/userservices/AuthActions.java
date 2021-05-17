@@ -10,7 +10,7 @@ public class AuthActions {
      */
 
     public static User loginUser(String password, String username) {
-        User user = User.auth(username, password);
+        User user = User.auth(password, username);
         return user;
     }
 

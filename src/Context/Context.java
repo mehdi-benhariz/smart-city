@@ -4,14 +4,17 @@ import java.util.HashMap;
 
 import models.User;
 import navigation.Navigator;
+import services.Recommand;
 import views.Screen;
 
 public class Context {
     private HashMap<String, Screen> routes = new HashMap<String, Screen>();
     public Navigator navigator = new Navigator();
     private User user = null;
+    public Recommand recommander;
 
-    public Context(HashMap<String, Screen> routes) {
+    public Context(HashMap<String, Screen> routes, Recommand recommander) {
+        this.recommander = recommander;
         this.routes = routes;
     }
 

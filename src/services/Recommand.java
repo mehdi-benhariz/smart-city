@@ -8,10 +8,14 @@ import models.Hotel;
 import models.Job;
 import models.User;
 
-public class Recommand<T> {
+public class Recommand {
     // unchecked casting warning was suppredded using the decorator
+    public Recommand() {
+    }
+
+    // the generic type is secified only for the recommand method
     @SuppressWarnings("unchecked")
-    public Vector<T> recommand(T o) {
+    public <T> Vector<T> recommand(T o) {
 
         if (o instanceof Hotel)
             return (Vector<T>) Hotel.getAll();
