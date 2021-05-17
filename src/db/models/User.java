@@ -91,7 +91,7 @@ public class User implements Model {
             if (user.equals(null))
                 System.out.println("login failed");
 
-            return null;
+            return user;
         } catch (Exception e) {
 
             return null;
