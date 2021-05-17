@@ -119,4 +119,12 @@ public class Company extends Place implements Model {
         DBUtils.saveData("Companies", tableOfDB, true);
     }
 
+    @Override
+    public String toString() {
+        String aux = "";
+        for (int i = 0; i < jobs.size(); i++)
+            aux += jobs.get(i).toString();
+
+        return super.toString() + "\n" + aux;
+    }
 }

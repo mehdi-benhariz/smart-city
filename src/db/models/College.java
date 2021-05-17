@@ -112,4 +112,9 @@ public class College extends Place implements Model {
         tableOfDB.add(row);
         DBUtils.saveData("Colleges", tableOfDB, true);
     }
+
+    @Override
+    public String toString() {
+        return super.toString() + "Score : " + score + "Degree : " + degree;
+    }
 }

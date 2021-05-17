@@ -121,4 +121,9 @@ public class Job implements Model {
         DBUtils.saveData("Jobs", tableOfDB, true);
     }
 
+    @Override
+    public java.lang.String toString() {
+        return "Job{" + "name='" + name + '\n' + " description='" + description + '\n' + "degree='" + degree + '\n'
+                + ", id=" + id + '}';
+    }
 }

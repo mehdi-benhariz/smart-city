@@ -61,4 +61,9 @@ public abstract class Place {
         return null;
     }
 
+    @java.lang.Override
+    public java.lang.String toString() {
+        return " name='" + name + '\'' + ", location=" + location + ", adresse='" + adresse + '\'' + ", rating="
+                + rating;
+    }
 }
