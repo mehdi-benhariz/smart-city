@@ -51,9 +51,9 @@ public abstract class Place {
     }
 
     public static Pair<Double> convertStringToPair(String pair) {
-        String[] Location = pair.split(" ", 1);
-        Double x = Double.parseDouble(Location[0]);
-        Double y = Double.parseDouble(Location[1]);
+        String[] location = pair.split(" ");
+        Double x = Double.parseDouble(location[0]);
+        Double y = Double.parseDouble(location[1]);
         return new Pair<Double>(x, y);
     }
 
