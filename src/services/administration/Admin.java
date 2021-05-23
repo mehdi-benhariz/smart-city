@@ -3,86 +3,59 @@ package services.administration;
 import java.io.*;
 import java.util.*;
 
+import Utils.DBUtils;
 import models.User;
 
 public class Admin extends User {
-    protected int admin_id;
+
     Vector<User> users = new Vector<User>(100);
 
     public Admin(String name, int age, int id, String email, String pwd) {
-        super(age, email, name, id, pwd);
-        this.admin_id = id;
-    }
-
-    public int getAdminId() {
-        return admin_id;
-    }
-
-    public void set_Admin_id(int admin_id) {
-        this.admin_id = admin_id;
-    }
-
-    // khidmt zack!!!
-    public void addUser(String name, int age, int id, String email, String pwd) {
-        User new_User = new User(age, id, email, name, pwd);
-
-        // Add the new element
-        users.add(new_User);
-        System.out.println("User Added Successfully");
-    }
-
-    private boolean deleteUser(int id) {
-        for (int i=0;i<users.size();i++)
-        if(users.get(i).getId()==id)
-        {  users.remove(i);
-            System.out.println("User Removed Successfully");
-
-        }
-        else {
-            System.out.println("User Not Found Please Verify The Id You've Given ")
-
-        }
-
-        return true;
-    }
-
-    public boolean update_user(int id) {
-        Scanner scanner = new Scanner(System.in);
-        System.out.println(" Type new e-mail:");
-        String mail = scanner.nextLine();
-       System.out.println("Type new password:");
-        String pwd = scanner.nextLine();
-        for(int i=0;i<users.size();i++)
-        if(users.get(i).get_id()==id)
-        {users.get(i).set_user_email(mail);
-          users.get(i).set_User_pwd(pwd);
-          System.out.println("information has been updated");       
- 
-         return true;}
-         else {
-            System.out.println("This Id doesn't figure in our database please verify the Id you have entered.")
-            return false;
-        }
-    
-    }
-
-    public void Get_All_users() {
-        for (int i = 0; i < users.size(); i++) {
-            users.get(i).toString();
-        }
-    }
-
-    public User Get_User_By_Id(int id) {
-        for (int i = 0; i < users.size(); i++) {
-            if (users.get(i).get_id() == id)
-                return users.get(i);
-            else {
-                User Empty_User = new User();
-                System.out.println("No user with the given Id is found in our database please verify your entry.");
-                return Empty_User;
-            }
-
-        }
+        super(id, name, age, email, pwd);
 
     }
+
+    /*
+     * public static Vector<Admin> getAll() { Vector<String[]> tableOfDB =
+     * DBUtils.getData("Users"); Vector<Admin> tableOfUsers = new Vector<Admin>();
+     * for (String[] row : tableOfDB) tableOfUsers.add((Admin)
+     * convertStringToObject(row));
+     * 
+     * return tableOfUsers; }
+     * 
+     * public static User getById(int id) {
+     * 
+     * Vector<String[]> tableOfDB = DBUtils.getData("User"); for (String[] user :
+     * tableOfDB) if (Integer.parseInt((user[0])) == id) return
+     * convertStringToObject(user);
+     * 
+     * return null; }
+     * 
+     * public static void deleteById(int id) {
+     * 
+     * Vector<String[]> tableOfDB = DBUtils.getData("Users");
+     * 
+     * for (String[] user : tableOfDB) { if (Integer.parseInt((user[0])) == id) {
+     * tableOfDB.remove(user); break; } } DBUtils.saveData("Users", tableOfDB,
+     * false); }
+     * 
+     * public static void update(int id, User newUser) { // res =
+     * DBUtils.getData("Users"); // update from res //
+     * DBUtils.saveData("Users",res,false) Vector<String[]> tableOfDB =
+     * DBUtils.getData("Users"); for (int i = 0; i < tableOfDB.size(); i++) // id is
+     * in the first case if (Integer.parseInt((tableOfDB.get(i)[0])) == id) {
+     * tableOfDB.get(i)[1] = Integer.toString(newUser.getAge()); tableOfDB.get(i)[2]
+     * = newUser.getEmail(); tableOfDB.get(i)[3] = newUser.getPwd();
+     * tableOfDB.get(i)[4] = newUser.getName(); break; }
+     * 
+     * DBUtils.saveData("Users", tableOfDB, false); }
+     * 
+     * @Override public void save() { // create a String[] from "this" data // write
+     * to db;
+     * 
+     * Vector<String[]> tableOfDB = new Vector<String[]>(); String[] row = new
+     * String[4]; row[1] = Integer.toString(getAge()); row[2] = getEmail(); row[3] =
+     * getPwd(); row[4] = getName(); tableOfDB.add(row); DBUtils.saveData("Users",
+     * tableOfDB, true); }
+     */
 }
