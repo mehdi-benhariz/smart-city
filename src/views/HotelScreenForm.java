@@ -39,7 +39,6 @@ public class HotelScreenForm extends Screen {
 
     }
 
-    /*--------NOT TESTED--------*/
     @Override
     public void build(Context context) {
         this.display();
@@ -47,5 +46,6 @@ public class HotelScreenForm extends Screen {
         for (Hotel hotel : resualts) {
             System.out.println("=> " + hotel.getName());
         }
+        context.navigator.push(context, "/categories");
     }
 }

@@ -3,6 +3,7 @@ import java.util.HashMap;
 import Context.Context;
 
 import services.Recommand;
+//import services.api.HotelAPI;
 import views.Exit;
 import views.HotelScreenForm;
 import views.Screen;
@@ -15,7 +16,6 @@ public class App {
 
                 final String[] mainOptions = { "login", "registration" };
                 final String[] CategoryOptions = { "Education", "accommodation", "work", "retrun" };
-
                 HashMap<String, Screen> routes = new HashMap<String, Screen>();
                 // HashMap<String, Recommand> recommander = new HashMap<String, Recommand>();
 

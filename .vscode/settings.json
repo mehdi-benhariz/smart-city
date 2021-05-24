@@ -2,5 +2,9 @@
     "java.project.sourcePaths": [
         "src/db",
         "src"
+    ],
+    "java.project.referencedLibraries": [
+        "lib/**/*.jar",
+        "/home/mehdi/Documents/9rya/test/demo/API/src/json-simple-1.1.jar"
     ]
 }
